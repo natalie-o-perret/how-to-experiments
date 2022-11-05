@@ -1,0 +1,4 @@
+[*.{fs,fsx,fsi}]
+# General Stuff
+max_line_length = 120
+indent_size = 4
