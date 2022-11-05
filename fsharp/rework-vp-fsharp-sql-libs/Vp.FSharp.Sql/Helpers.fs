@@ -4,6 +4,6 @@ open System
 
 
 module DbNull =
-    let is<'T>() = typedefof<'T> = typedefof<DBNull>
+    let is<'T> () = typedefof<'T> = typedefof<DBNull>
 
-    let retypedAs<'T>() = DBNull.Value :> obj :?> 'T
+    let retypedAs<'T> () = DBNull.Value :> obj :?> 'T

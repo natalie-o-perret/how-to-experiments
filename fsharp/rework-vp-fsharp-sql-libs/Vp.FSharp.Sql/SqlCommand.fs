@@ -34,8 +34,7 @@ type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransactio
             SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>
                 .DefaultPrepare
           Transaction = None
-          Logger = LoggerKind.Configuration }
-        : CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>
+          Logger = LoggerKind.Configuration }: CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>
 
     /// Update the command definition with the given text contained in the given string.
     static member internal setText value definition =
@@ -53,7 +52,8 @@ type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransactio
     /// Initialize a new command definition with the given text spanning over several strings (ie. list).
     static member textFromList value =
         SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>.init ()
-        |> SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>.setTextFromList value
+        |> SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue>.setTextFromList
+            value
 
     /// Update the command definition so that when executing the command, it doesn't use any logger.
     /// Be it the default one (Global, if any.) or a previously overriden one.

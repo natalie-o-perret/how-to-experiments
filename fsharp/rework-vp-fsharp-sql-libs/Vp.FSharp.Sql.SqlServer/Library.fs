@@ -16,41 +16,41 @@ type SqlServerDbValue =
 
     | Bit of bool
 
-    | TinyInt  of uint8
+    | TinyInt of uint8
     | SmallInt of int16
-    | Int      of int32
-    | BigInt   of int64
+    | Int of int32
+    | BigInt of int64
 
-    | Real  of single
+    | Real of single
     | Float of double
 
     | SmallMoney of decimal
-    | Money      of decimal
-    | Decimal    of decimal
-    | Numeric    of decimal
+    | Money of decimal
+    | Decimal of decimal
+    | Numeric of decimal
 
-    | Binary     of uint8 array
-    | VarBinary  of uint8 array
-    | Image      of uint8 array
+    | Binary of uint8 array
+    | VarBinary of uint8 array
+    | Image of uint8 array
     | RowVersion of uint8 array
     | FileStream of uint8 array
-    | Timestamp  of uint8 array
+    | Timestamp of uint8 array
 
     | UniqueIdentifier of Guid
 
-    | Time           of TimeSpan
-    | Date           of DateTime
-    | SmallDateTime  of DateTime
-    | DateTime       of DateTime
-    | DateTime2      of DateTime
+    | Time of TimeSpan
+    | Date of DateTime
+    | SmallDateTime of DateTime
+    | DateTime of DateTime
+    | DateTime2 of DateTime
     | DateTimeOffset of DateTimeOffset
 
-    | Char     of string
-    | NChar    of string
-    | VarChar  of string
+    | Char of string
+    | NChar of string
+    | VarChar of string
     | NVarChar of string
-    | Text     of string
-    | NText    of string
+    | Text of string
+    | NText of string
 
     | Xml of SqlXml
 
@@ -66,7 +66,8 @@ type TDataReader = Microsoft.Data.SqlClient.SqlDataReader
 type TTransaction = Microsoft.Data.SqlClient.SqlTransaction
 
 [<Sealed>]
-type SqlServerCommand private () = inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue>()
+type SqlServerCommand private () =
+    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue>()
 
 type SqlServerCommandBuilder() =
 

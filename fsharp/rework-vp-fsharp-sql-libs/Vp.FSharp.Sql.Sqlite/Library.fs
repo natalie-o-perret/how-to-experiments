@@ -22,7 +22,8 @@ type TDataReader = SQLiteDataReader
 type TTransaction = SQLiteTransaction
 
 [<Sealed>]
-type SqliteCommand private () = inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqliteDbValue>()
+type SqliteCommand private () =
+    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqliteDbValue>()
 
 type SqliteCommandBuilder() =
 

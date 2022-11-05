@@ -17,15 +17,15 @@ open Vp.FSharp.Sql
 type PostgresValue =
     | Null
 
-    | Bit      of bool
-    | Boolean  of bool
+    | Bit of bool
+    | Boolean of bool
 
     | SmallInt of int16
-    | Integer  of int32
-    | Oid      of uint32
-    | Xid      of uint32
-    | Cid      of uint32
-    | BigInt   of int64
+    | Integer of int32
+    | Oid of uint32
+    | Xid of uint32
+    | Cid of uint32
+    | BigInt of int64
 
     | Real of single
     | Double of double
@@ -87,7 +87,8 @@ type TDataReader = NpgsqlDataReader
 type TTransaction = NpgsqlTransaction
 
 [<Sealed>]
-type PostgresCommand private () = inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresValue>()
+type PostgresCommand private () =
+    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresValue>()
 
 type PostgresCommandBuilder() =
 
