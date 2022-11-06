@@ -1,6 +1,8 @@
 <Project>
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
+    <ImplicitUsings>enable</ImplicitUsings>
     <TargetFramework>net6.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>

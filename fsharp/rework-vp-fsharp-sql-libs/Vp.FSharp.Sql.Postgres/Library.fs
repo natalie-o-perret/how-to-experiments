@@ -9,12 +9,13 @@ open Npgsql
 open NpgsqlTypes
 
 open Vp.FSharp.Sql
+open Vp.FSharp.Sql.Postgres.StaticAbstracts
 
 
 /// Native PostgreSQL DB types.
 /// See https://www.npgsql.org/doc/types/basic.html
 /// and https://stackoverflow.com/a/845472/4636721
-type PostgresValue =
+type PostgresDbValue =
     | Null
 
     | Bit of bool
@@ -78,6 +79,159 @@ type PostgresValue =
     | Enum of Enum
 
     | Custom of (NpgsqlDbType * obj)
+    interface IDbValue<PostgresDbValue, NpgsqlParameter> with
+        member this.ToParameter name value =
+            let parameter = NpgsqlParameter()
+            parameter.ParameterName <- name
+            match value with
+            | Null ->
+                parameter.Value <- DBNull.Value
+
+            | Bit value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Bit
+            | Boolean value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Boolean
+
+            | SmallInt value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Smallint
+            | Integer value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Integer
+            | Oid value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Oid
+            | Xid value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Xid
+            | Cid value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Cid
+            | BigInt value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Bigint
+
+            | Real value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Bigint
+            | Double value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Bigint
+
+            | Money value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Money
+            | Numeric value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Numeric
+
+            | ByteA value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Bytea
+            | OidVector value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Oidvector
+
+            | Uuid value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Uuid
+
+            | INet value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Inet
+            | MacAddr value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.MacAddr
+
+            | TsQuery value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.TsQuery
+            | TsVector value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.TsVector
+
+            | Point value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Point
+            | LSeg value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.LSeg
+            | Path value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Path
+            | Polygon value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Polygon
+            | Line value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Line
+            | Circle value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Circle
+            | Box value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Box
+
+            | HStore value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Hstore
+
+            | Date value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Date
+            | Interval value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Interval
+            | Time value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Time
+            | TimeTz value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.TimeTz
+            | Timestamp value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Timestamp
+            | TimestampTz value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.TimestampTz
+
+            | InternalChar value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.InternalChar
+
+            | Char value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Char
+            | VarChar value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Varchar
+
+            | Name value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Name
+            | CiText value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Citext
+            | Text value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Text
+            | Xml value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Xml
+            | Json value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Json
+            | Jsonb value ->
+                parameter.Value <- value
+                parameter.NpgsqlDbType <- NpgsqlDbType.Jsonb
+            | Enum value ->
+                parameter.Value <- value
+            | Custom (dbType, value) ->
+                parameter.NpgsqlDbType <- dbType
+                parameter.Value <- value
+            parameter
 
 
 type TConnection = NpgsqlConnection
@@ -88,11 +242,11 @@ type TTransaction = NpgsqlTransaction
 
 [<Sealed>]
 type PostgresCommand private () =
-    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresValue>()
+    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresDbValue, PostgresIODependencies>()
 
 type PostgresCommandBuilder() =
 
-    inherit SqlCommandBuilder<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresValue>()
+    inherit SqlCommandBuilder<TConnection, TCommand, TParameter, TDataReader, TTransaction, PostgresDbValue, PostgresIODependencies>()
     do ()
 
 

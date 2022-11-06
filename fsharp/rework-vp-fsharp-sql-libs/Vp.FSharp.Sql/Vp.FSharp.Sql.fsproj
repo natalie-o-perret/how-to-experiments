@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
-
     <ItemGroup>
         <Compile Include="Helpers.fs" />
         <Compile Include="Types.fs" />
         <Compile Include="SqlCommand.fs" />
         <Compile Include="SqlCommandBuilder.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Vp.FSharp.Sql.StaticAbstracts\Vp.FSharp.Sql.StaticAbstracts.csproj" />
     </ItemGroup>
 
 </Project>

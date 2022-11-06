@@ -1,18 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
-
     <ItemGroup>
         <Compile Include="Library.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Npgsql" Version="6.0.7" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <ProjectReference Include="..\Vp.FSharp.Sql.Postgres.StaticAbstracts\Vp.FSharp.Sql.Postgres.StaticAbstracts.csproj" />
       <ProjectReference Include="..\Vp.FSharp.Sql\Vp.FSharp.Sql.fsproj" />
     </ItemGroup>
 

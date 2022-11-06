@@ -4,7 +4,10 @@ open System
 open System.Data
 open System.Data.SqlTypes
 
+open Microsoft.Data.SqlClient
+
 open Vp.FSharp.Sql
+open Vp.FSharp.Sql.SqlServer.StaticAbstracts
 
 
 
@@ -57,21 +60,140 @@ type SqlServerDbValue =
     | SqlVariant of obj
 
     | Custom of (SqlDbType * obj)
+    interface IDbValue<SqlServerDbValue, SqlParameter> with
+
+        member this.ToParameter name value =
+            let parameter = SqlParameter()
+            parameter.ParameterName <- name
+            match value with
+            | Null ->
+                parameter.Value <- DBNull.Value
+
+            | Bit value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Bit
+
+            | TinyInt value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.TinyInt
+            | SmallInt value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.SmallInt
+            | Int value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Int
+            | BigInt value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.BigInt
+
+            | Real value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Real
+            | Float value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Float
+
+            | Decimal value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Decimal
+            | Numeric value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Decimal
+            | SmallMoney value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.SmallMoney
+            | Money value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Money
+
+            | Binary value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.VarBinary
+            | VarBinary value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.VarBinary
+            | Image value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Binary
+            | RowVersion value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Timestamp
+            | FileStream value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.VarBinary
+            | Timestamp value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Timestamp
+
+            | UniqueIdentifier value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.UniqueIdentifier
+
+            | Time value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Time
+            | Date value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Date
+            | SmallDateTime value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.DateTime
+            | DateTime value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.DateTime
+            | DateTime2 value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.DateTime2
+            | DateTimeOffset value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.DateTimeOffset
+
+            | Char value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Char
+            | NChar value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.NChar
+            | VarChar value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.VarChar
+            | NVarChar value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.NVarChar
+            | Text value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Text
+            | NText value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.NText
+
+            | Xml value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Xml
+
+            | SqlVariant value ->
+                parameter.Value <- value
+                parameter.SqlDbType <- SqlDbType.Variant
+
+            | Custom (dbType, value) ->
+                parameter.Value <- value
+                parameter.SqlDbType <- dbType
+            parameter
 
 
-type TConnection = Microsoft.Data.SqlClient.SqlConnection
-type TCommand = Microsoft.Data.SqlClient.SqlCommand
-type TParameter = Microsoft.Data.SqlClient.SqlParameter
-type TDataReader = Microsoft.Data.SqlClient.SqlDataReader
-type TTransaction = Microsoft.Data.SqlClient.SqlTransaction
+type TConnection = SqlConnection
+type TCommand = SqlCommand
+type TParameter = SqlParameter
+type TDataReader = SqlDataReader
+type TTransaction = SqlTransaction
 
 [<Sealed>]
 type SqlServerCommand private () =
-    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue>()
+    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue, SqlServerIODependencies>()
 
 type SqlServerCommandBuilder() =
 
-    inherit SqlCommandBuilder<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue>()
+    inherit SqlCommandBuilder<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqlServerDbValue, SqlServerIODependencies>()
     do ()
 
 

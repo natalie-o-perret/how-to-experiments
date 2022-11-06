@@ -7,6 +7,7 @@ open System.Data.Common
 open System.Threading.Tasks
 
 open Vp.FSharp.Sql.Helpers
+open Vp.FSharp.Sql.StaticAbstracts
 
 
 /// The type that represents the text of the command that is going to be run against the connection data source.
@@ -40,18 +41,22 @@ type LoggerKind<'DbConnection, 'DbCommand
     /// Nothing, ie. no logger assigned upon command execution.
     | Nothing
 
+type IDbValue<'T, 'Parameter> = abstract member ToParameter: name: string -> value: 'T -> 'Parameter
+
 /// Contains the definition of a command upon its execution
-type CommandDefinition<'DbConnection, 'DbCommand, 'DbParameter, 'DbDataReader, 'DbTransaction, 'DbType
-    when 'DbConnection :> DbConnection
-    and 'DbCommand :> DbCommand
-    and 'DbParameter :> DbParameter
-    and 'DbDataReader :> DbDataReader
-    and 'DbTransaction :> DbTransaction> =
+type CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies
+    when 'TConnection :> DbConnection
+    and 'TCommand :> DbCommand
+    and 'TParameter :> DbParameter
+    and 'TDataReader :> DbDataReader
+    and 'TTransaction :> DbTransaction
+    and 'TDbValue :> IDbValue<'TDbValue, 'TParameter>
+    and 'TIODependencies :> IIODependencies<'TConnection, 'TCommand, 'TDataReader, 'TTransaction>> =
     { /// The text of the command that is going to be run against the connection data source.
       Text: Text
 
       /// The parameters of the SQL statement or stored procedure.
-      Parameters: (string * 'DbType) list
+      Parameters: (string * 'TDbValue) list
 
       /// A cancellation token that can be used to request the operation to be cancelled early.
       CancellationToken: CancellationToken
@@ -66,10 +71,10 @@ type CommandDefinition<'DbConnection, 'DbCommand, 'DbParameter, 'DbDataReader, '
       Prepare: bool
 
       /// The transactions within which the command is going to be executed.
-      Transaction: 'DbTransaction option
+      Transaction: 'TTransaction option
 
       /// The logger to call upon events occurence.
-      Logger: LoggerKind<'DbConnection, 'DbCommand> }
+      Logger: LoggerKind<'TConnection, 'TCommand> }
 
 /// A data structure holding some configuration with the relevant generic constraints.
 type SqlConfiguration<'DbConnection, 'DbCommand
@@ -108,6 +113,8 @@ type SqlConfigurationCache<'DbConnection, 'DbCommand
 
     /// Set up no logger callback
     static member NoLogger() = instance <- SqlConfiguration.noLogger instance
+
+
 
 
 // Ie. The ADO.NET Provider generic constraints mapper due to the lack of proper support for some variant of the SRTP
