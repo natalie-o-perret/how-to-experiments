@@ -8,6 +8,14 @@ open System.Data.Common
 open Vp.FSharp.Sql.StaticAbstracts
 
 
+[<RequireQualifiedAccess>]
+module SqlCommand =
+
+    let [<Literal>] DefaultTimeoutInSeconds = 30.
+    let [<Literal>] DefaultPrepare = false
+    let [<Literal>]  DefaultCommandType = CommandType.Text
+
+
 [<AbstractClass>]
 type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies
     when 'TConnection :> DbConnection
@@ -16,8 +24,7 @@ type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransactio
     and 'TDataReader :> DbDataReader
     and 'TTransaction :> DbTransaction
     and 'TDbValue :> IDbValue<'TDbValue, 'TParameter>
-    and 'TIODependencies :> IIODependencies<'TConnection, 'TCommand, 'TDataReader, 'TTransaction>
-    >() =
+    and 'TIODependencies :> IIODependencies<'TConnection, 'TCommand, 'TDataReader, 'TTransaction>> () =
 
     static member val DefaultTimeoutInSeconds = 30.
     static member val DefaultPrepare = false
@@ -28,23 +35,16 @@ type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransactio
         { Text = Text.Single String.Empty
           Parameters = []
           CancellationToken = CancellationToken.None
-          Timeout =
-            TimeSpan.FromSeconds(
-                SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
-                    .DefaultTimeoutInSeconds
-            )
-          CommandType =
-            SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
-                .DefaultCommandType
-          Prepare =
-            SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
-                .DefaultPrepare
+          Timeout = TimeSpan.FromSeconds(SqlCommand.DefaultTimeoutInSeconds)
+          CommandType = SqlCommand.DefaultCommandType
+          Prepare = SqlCommand.DefaultPrepare
           Transaction = None
           Logger = LoggerKind.Configuration }: CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
 
     /// Update the command definition with the given text contained in the given string.
     static member internal setText value definition =
-        { definition with Text = Text.Single value }: CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
+        { definition with Text = Text.Single value }
+        : CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
 
     /// Update the command definition with the given text spanning over several strings (ie. list).
     static member internal setTextFromList value definition =
@@ -93,7 +93,8 @@ type SqlCommand<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransactio
 
     /// Update the command definition and sets whether the command should be wrapped in the given transaction.
     static member transaction value commandDefinition =
-        { commandDefinition with Transaction = Some value }: CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
+        { commandDefinition with Transaction = Some value }
+        : CommandDefinition<'TConnection, 'TCommand, 'TParameter, 'TDataReader, 'TTransaction, 'TDbValue, 'TIODependencies>
 
     static member executeWhatever connection =
         use command = SqlDependencyFSharpBridge<'TConnection, 'TCommand, 'TDataReader, 'TTransaction, 'TIODependencies>

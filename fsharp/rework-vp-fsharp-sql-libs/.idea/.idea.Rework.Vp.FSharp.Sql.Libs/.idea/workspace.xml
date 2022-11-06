@@ -6,31 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37dffc3-52b5-496e-a789-81477943bdfc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres.StaticAbstracts/PostgresIODependencies.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres.StaticAbstracts/Vp.FSharp.Sql.Postgres.StaticAbstracts.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer.StaticAbstracts/SqlServerIODependencies.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer.StaticAbstracts/Vp.FSharp.Sql.SqlServer.StaticAbstracts.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.DUs/Library.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.DUs/Vp.FSharp.Sql.Sqlite.DUs.fsproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.StaticAbstracts/SqliteIODependencies.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.StaticAbstracts/Vp.FSharp.Sql.Sqlite.StaticAbstracts.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/IIODependencies.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/IODependencyFSharpBridge.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/Vp.FSharp.Sql.StaticAbstracts.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rework.Vp.FSharp.Sql.Libs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rework.Vp.FSharp.Sql.Libs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory.Build.props" beforeDir="false" afterPath="$PROJECT_DIR$/Directory.Build.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playground/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Playground/Program.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rework.Vp.FSharp.Sql.Libs.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Rework.Vp.FSharp.Sql.Libs.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Library.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Vp.FSharp.Sql.Postgres.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Vp.FSharp.Sql.Postgres.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Library.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Vp.FSharp.Sql.SqlServer.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Vp.FSharp.Sql.SqlServer.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Library.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Vp.FSharp.Sql.Sqlite.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Vp.FSharp.Sql.Sqlite.fsproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommand.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommand.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommandBuilder.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommandBuilder.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/Types.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/Types.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/Vp.FSharp.Sql.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/Vp.FSharp.Sql.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
