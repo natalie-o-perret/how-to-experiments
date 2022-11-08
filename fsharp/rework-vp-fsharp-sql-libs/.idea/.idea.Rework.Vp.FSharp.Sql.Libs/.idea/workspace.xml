@@ -6,9 +6,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e37dffc3-52b5-496e-a789-81477943bdfc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/DbValue.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Aliases.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/DbValue.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommandGen.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Rework.Vp.FSharp.Sql.Libs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rework.Vp.FSharp.Sql.Libs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Directory.Build.props" beforeDir="false" afterPath="$PROJECT_DIR$/Directory.Build.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Playground/Playground.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Playground/Playground.fsproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Playground/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Playground/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rework.Vp.FSharp.Sql.Libs.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Rework.Vp.FSharp.Sql.Libs.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres.StaticAbstracts/PostgresIODependencies.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres.StaticAbstracts/Vp.FSharp.Sql.Postgres.StaticAbstracts.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Library.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Vp.FSharp.Sql.Postgres.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Vp.FSharp.Sql.Postgres.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer.StaticAbstracts/SqlServerIODependencies.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer.StaticAbstracts/Vp.FSharp.Sql.SqlServer.StaticAbstracts.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Library.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Vp.FSharp.Sql.SqlServer.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Vp.FSharp.Sql.SqlServer.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.StaticAbstracts/SqliteIODependencies.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.StaticAbstracts/Vp.FSharp.Sql.Sqlite.StaticAbstracts.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Library.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Library.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Vp.FSharp.Sql.Sqlite.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite/Vp.FSharp.Sql.Sqlite.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/IIODependencies.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/IODependencyFSharpBridge.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql.StaticAbstracts/Vp.FSharp.Sql.StaticAbstracts.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/Helpers.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/Helpers.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommand.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommand.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommandBuilder.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/SqlCommandBuilder.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/Types.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/Types.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vp.FSharp.Sql/Vp.FSharp.Sql.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Vp.FSharp.Sql/Vp.FSharp.Sql.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +46,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Vp.FSharp.Sql.Postgres/Library.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Vp.FSharp.Sql.SqlServer/Library.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Vp.FSharp.Sql.Sqlite.DUs/Library.fs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -70,6 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1667614767356</updated>
       <workItem from="1667614773079" duration="5742000" />
+      <workItem from="1667818780244" duration="21358000" />
+      <workItem from="1667880226786" duration="4878000" />
     </task>
     <servers />
   </component>

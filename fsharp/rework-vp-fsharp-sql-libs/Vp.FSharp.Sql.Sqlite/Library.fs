@@ -2,9 +2,9 @@
 
 open System.Data
 open System.Data.SQLite
+open System.Threading.Tasks
 
 open Vp.FSharp.Sql
-open Vp.FSharp.Sql.Sqlite.StaticAbstracts
 
 
 type SqliteDbValue =
@@ -15,11 +15,10 @@ type SqliteDbValue =
     | Blob of byte array
     | Custom of DbType * obj
     interface IDbValue<SqliteDbValue, SQLiteParameter> with
-        member this.ToParameter name value =
-
+        member this.ToParameter name =
             let parameter = SQLiteParameter()
             parameter.ParameterName <- name
-            match value with
+            match this with
             | Null ->
                 parameter.TypeName <- "NULL"
             | Integer value ->
@@ -42,21 +41,35 @@ type SqliteDbValue =
             parameter
 
 
-type TConnection = SQLiteConnection
-type TCommand = SQLiteCommand
-type TParameter = SQLiteParameter
-type TDataReader = SQLiteDataReader
-type TTransaction = SQLiteTransaction
+type SqliteCommandDefinition =
+    CommandDefinition<SQLiteConnection, SQLiteCommand, SQLiteParameter, SQLiteDataReader, SQLiteTransaction, SqliteDbValue, SqliteIODependencies, SqliteCommandDefinition>
 
+and SqliteIODependencies () =
+    interface IDependencies<SQLiteConnection, SQLiteCommand, SQLiteParameter, SQLiteDataReader, SQLiteTransaction, SqliteDbValue, SqliteIODependencies, SqliteCommandDefinition> with
+        member this.CreateCommand(connection: SQLiteConnection) = connection.CreateCommand()
+        member this.SetCommandTransaction (command: SQLiteCommand) transaction = command.Transaction <- transaction
+
+        member this.BeginTransaction (connection: SQLiteConnection) isolationLevel =
+            connection.BeginTransaction(isolationLevel = isolationLevel)
+
+        member this.BeginTransactionTask (connection: SQLiteConnection) isolationLevel _ =
+            ValueTask.FromResult(connection.BeginTransaction(isolationLevel = isolationLevel))
+
+        member this.ExecuteReader(command: SQLiteCommand) = command.ExecuteReader()
+
+        member this.ExecuteReaderTask (command: SQLiteCommand) _ =
+            Task.FromResult(command.ExecuteReader())
+
+        member this.CastCommandDefinition (input: SqliteCommandDefinition) =
+            input
 
 [<Sealed>]
 type SqliteCommand private () =
-    inherit SqlCommand<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqliteDbValue, SqliteIODependencies>()
+    inherit SqlCommand<SQLiteConnection, SQLiteCommand, SQLiteParameter, SQLiteDataReader, SQLiteTransaction, SqliteDbValue, SqliteIODependencies, SqliteCommandDefinition>()
 
 type SqliteCommandBuilder() =
 
-    inherit SqlCommandBuilder<TConnection, TCommand, TParameter, TDataReader, TTransaction, SqliteDbValue, SqliteIODependencies>()
-    do ()
+    inherit SqlCommandBuilder<SQLiteConnection, SQLiteCommand, SQLiteParameter, SQLiteDataReader, SQLiteTransaction, SqliteDbValue, SqliteIODependencies, SqliteCommandDefinition>()
 
 
 let sqliteCommand = SqliteCommandBuilder()

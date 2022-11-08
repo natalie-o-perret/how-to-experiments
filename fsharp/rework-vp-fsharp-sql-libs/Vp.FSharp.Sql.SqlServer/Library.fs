@@ -7,7 +7,6 @@ open System.Data.SqlTypes
 open Microsoft.Data.SqlClient
 
 open Vp.FSharp.Sql
-open Vp.FSharp.Sql.SqlServer.StaticAbstracts
 
 
 
@@ -60,6 +59,9 @@ type SqlServerDbValue =
     | SqlVariant of obj
 
     | Custom of (SqlDbType * obj)
+
+
+
     interface IDbValue<SqlServerDbValue, SqlParameter> with
 
         member this.ToParameter name value =

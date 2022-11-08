@@ -18,14 +18,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Vp.FSharp.Sql.Postgres", "V
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Vp.FSharp.Sql.SqlServer", "Vp.FSharp.Sql.SqlServer\Vp.FSharp.Sql.SqlServer.fsproj", "{0C5B6B6F-9EE9-47D4-BF70-FA5CEC59A71D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vp.FSharp.Sql.StaticAbstracts", "Vp.FSharp.Sql.StaticAbstracts\Vp.FSharp.Sql.StaticAbstracts.csproj", "{BAC7251F-D6CE-4814-81FB-E465D740E327}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vp.FSharp.Sql.SqlServer.StaticAbstracts", "Vp.FSharp.Sql.SqlServer.StaticAbstracts\Vp.FSharp.Sql.SqlServer.StaticAbstracts.csproj", "{86B5F2B5-42D5-436A-BE9B-F0B7130D3594}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vp.FSharp.Sql.Sqlite.StaticAbstracts", "Vp.FSharp.Sql.Sqlite.StaticAbstracts\Vp.FSharp.Sql.Sqlite.StaticAbstracts.csproj", "{C1F9CD85-34DA-4515-84AA-05B1BF51E472}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vp.FSharp.Sql.Postgres.StaticAbstracts", "Vp.FSharp.Sql.Postgres.StaticAbstracts\Vp.FSharp.Sql.Postgres.StaticAbstracts.csproj", "{11906D62-161B-4D26-B714-F5F98E4AFB84}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,21 +44,5 @@ Global
 		{0C5B6B6F-9EE9-47D4-BF70-FA5CEC59A71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C5B6B6F-9EE9-47D4-BF70-FA5CEC59A71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C5B6B6F-9EE9-47D4-BF70-FA5CEC59A71D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAC7251F-D6CE-4814-81FB-E465D740E327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAC7251F-D6CE-4814-81FB-E465D740E327}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAC7251F-D6CE-4814-81FB-E465D740E327}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAC7251F-D6CE-4814-81FB-E465D740E327}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86B5F2B5-42D5-436A-BE9B-F0B7130D3594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86B5F2B5-42D5-436A-BE9B-F0B7130D3594}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86B5F2B5-42D5-436A-BE9B-F0B7130D3594}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86B5F2B5-42D5-436A-BE9B-F0B7130D3594}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1F9CD85-34DA-4515-84AA-05B1BF51E472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1F9CD85-34DA-4515-84AA-05B1BF51E472}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1F9CD85-34DA-4515-84AA-05B1BF51E472}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1F9CD85-34DA-4515-84AA-05B1BF51E472}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11906D62-161B-4D26-B714-F5F98E4AFB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11906D62-161B-4D26-B714-F5F98E4AFB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11906D62-161B-4D26-B714-F5F98E4AFB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11906D62-161B-4D26-B714-F5F98E4AFB84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
